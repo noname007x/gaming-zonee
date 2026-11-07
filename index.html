@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GAMING ZONE — Your world. Your game.</title>
+<style>
+:root{--bg:#0A0A0A;--card:#151515;--red:#E10600;--fg:#FFFFFF;--mut:#A0A0A0;--line:#2a2a2a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0A0A0A;--card:#151515;--red:#E10600;--fg:#FFFFFF;--mut:#A0A0A0}}
+:root[data-theme="dark"]{--bg:#0A0A0A;--card:#151515;--red:#E10600;--fg:#FFFFFF;--mut:#A0A0A0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Segoe UI",Roboto,Arial,sans-serif;line-height:1.55;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:Impact,"Arial Narrow Bold",Arial,sans-serif;letter-spacing:.04em;text-transform:uppercase;margin:0 0 .5em;line-height:1.1}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(10,10,10,.94);backdrop-filter:blur(8px);border-bottom:2px solid var(--red)}
+.bar{display:flex;align-items:center;gap:18px;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font:900 22px Impact,Arial,sans-serif;letter-spacing:.06em}
+.logo i{display:grid;place-items:center;width:36px;height:36px;background:var(--red);clip-path:polygon(25% 0,100% 0,75% 100%,0 100%);font-style:normal;font-size:15px}
+.logo b{color:var(--red)}
+nav{display:flex;gap:4px;margin-left:auto}
+nav a{padding:8px 11px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--mut);border-bottom:2px solid transparent}
+nav a:hover,nav a.on{color:var(--fg);border-color:var(--red)}
+.ib{background:none;border:1px solid var(--line);color:var(--fg);width:42px;height:42px;border-radius:6px;cursor:pointer;font-size:18px}
+.ib:hover{border-color:var(--red)}
+#burger{display:none}
+#sb{display:none;padding:10px 0;border-top:1px solid var(--line)}#sb.open{display:block}
+#sb form{display:flex;gap:8px}
+input,textarea,select{width:100%;background:#0f0f0f;border:1px solid var(--line);color:var(--fg);padding:12px 14px;border-radius:6px;font:inherit}
+input:focus,textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 3px rgba(225,6,0,.2)}
+.btn{display:inline-block;background:var(--red);color:#fff;border:0;padding:13px 26px;font:700 14px Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));transition:.2s}
+.btn:hover{filter:brightness(1.15);box-shadow:0 0 24px rgba(225,6,0,.6)}
+.btn.o{background:transparent;box-shadow:inset 0 0 0 2px var(--red)}
+.btn.s{padding:9px 16px;font-size:12px}
+.hero{position:relative;min-height:560px;display:flex;align-items:center;overflow:hidden;background:radial-gradient(circle at 75% 30%,rgba(225,6,0,.35),transparent 45%),linear-gradient(135deg,#0A0A0A 40%,#1a0505)}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 60px,rgba(225,6,0,.07) 60px 62px);animation:sl 18s linear infinite}
+@keyframes sl{to{background-position:400px 0}}
+.hero .wrap{position:relative}
+.hero h1{font-size:clamp(46px,10vw,120px);margin:0}
+.hero h1 b{color:var(--red)}
+.slogan{font-size:clamp(14px,2.4vw,22px);letter-spacing:.3em;color:var(--mut);margin:10px 0 28px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+section{padding:54px 0}
+.sh{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:24px;border-left:5px solid var(--red);padding-left:14px}
+.sh h2{margin:0;font-size:clamp(26px,4vw,40px)}
+.grid{display:grid;gap:22px;grid-template-columns:repeat(4,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:.25s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-5px);border-color:var(--red);box-shadow:0 10px 30px rgba(225,6,0,.22)}
+.art{height:150px;position:relative;display:grid;place-items:center;font:900 34px Impact,Arial;color:rgba(255,255,255,.9);letter-spacing:.05em}
+.art::after{content:"";position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--red)}
+.cb{padding:16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.cb h3{font-size:19px;margin:0}
+.cb p{margin:0;color:var(--mut);font-size:14px}
+.tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);border:1px solid var(--red);padding:2px 8px;align-self:flex-start}
+.demo{background:var(--red);color:#fff;font-size:10px;font-weight:700;padding:2px 6px;letter-spacing:.1em;margin-left:6px;vertical-align:middle}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto;padding-top:8px}
+.meta{font-size:12px;color:var(--mut)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.chip{background:var(--card);border:1px solid var(--line);color:var(--mut);padding:8px 14px;cursor:pointer;font-size:13px;font-weight:700;text-transform:uppercase}
+.chip.on,.chip:hover{border-color:var(--red);color:#fff}
+.chip.on{background:var(--red)}
+table{width:100%;border-collapse:collapse;background:var(--card)}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);font-size:14px}
+th{color:var(--red);text-transform:uppercase;font-size:12px;letter-spacing:.1em}
+.ov{overflow-x:auto;max-width:100%}
+.player{position:relative;aspect-ratio:16/9;background:#000;border:1px solid var(--line);display:grid;place-items:center;text-align:center;padding:20px;color:var(--mut)}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.prose{max-width:780px}.prose p{color:#d0d0d0}
+.field{margin-bottom:16px}.field label{display:block;font-weight:700;margin-bottom:6px;font-size:14px}
+.opt{display:flex;gap:10px;align-items:center;padding:6px 0;color:#ddd}.opt input{width:auto}
+.cm{background:var(--card);border-left:3px solid var(--red);padding:12px 16px;margin-bottom:10px}
+.cm p{margin:4px 0 0;word-break:break-word}
+.note{background:#1d0b0b;border:1px solid var(--red);padding:12px 16px;font-size:14px;margin-bottom:18px}
+.msg{color:#6fdc8c;font-weight:700;margin-top:12px}
+.bars div{margin:6px 0;font-size:13px}.bars span{display:block;height:10px;background:var(--red);margin-top:3px;transition:width .5s}
+.hp{position:absolute;left:-9999px}
+footer{border-top:2px solid var(--red);padding:34px 0;margin-top:30px;background:#070707;color:var(--mut);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.pg{animation:fi .4s ease}@keyframes fi{from{opacity:0;transform:translateY(8px)}}
+@media (max-width:1100px){.grid{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}nav a{padding:8px 7px;font-size:12px}}
+@media (max-width:900px){#burger{display:block;margin-left:auto}nav{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:#0A0A0A;border-bottom:2px solid var(--red);padding:10px 20px}nav.open{display:flex}nav a{padding:14px 4px;font-size:15px}}
+@media (max-width:640px){.grid,.g3,.g2{grid-template-columns:1fr}.btn{width:100%;text-align:center;padding:15px}.hero{min-height:480px}.wrap{padding:0 16px}section{padding:38px 0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.vp{position:relative;aspect-ratio:16/9;background:#000}.vp iframe{position:absolute;inset:0;width:100%;height:100%;border:0}.art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}</style>
+</head>
+<body>
+<header><div class="wrap">
+ <div class="bar">
+  <a class="logo" href="#home"><i>GZ</i><span>GAMING <b>ZONE</b></span></a>
+  <button class="ib" id="srch" aria-label="Search" style="margin-left:auto">&#9906;</button>
+  <button class="ib" id="burger" aria-label="Menu">&#9776;</button>
+  <nav id="nav"></nav>
+ </div>
+ <div id="sb"><form id="sf"><input id="sq" placeholder="Пошук: ігри, новини, відео, гайди, турніри…"><button class="btn s">GO</button></form></div>
+</div></header>
+<main id="app"></main>
+<footer><div class="wrap"><div><b style="color:#fff">GAMING ZONE</b><br>YOUR WORLD. YOUR GAME.</div><div>Результати змагань — за відкритими джерелами (посилання в розділах).</div></div></footer>
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const NAV=[['home','Home'],['games','Games'],['esports','Esports'],['players','Players'],['news','News'],['videos','Videos'],['guides','Guides'],['survey','Survey'],['about','About'],['contact','Contact']];
+const GAMES=[
+{id:'cs2',n:'Counter-Strike 2',g:'Tactical FPS',d:'Командний тактичний шутер: економіка раундів, гранати, робота з картою та командна комунікація.',c:'#E10600,#3a0000'},
+{id:'dota2',n:'Dota 2',g:'MOBA',d:'Глибока стратегічна MOBA: драфт героїв, контроль карти, командні бої та тисячі комбінацій предметів.',c:'#8a1c1c,#1a0a0a'},
+{id:'valorant',n:'Valorant',g:'Hero Shooter',d:'Тактичний шутер із унікальними агентами та здібностями. Точна стрільба поєднується з грою від навичок.',c:'#c4161c,#2a2a2a'},
+{id:'minecraft',n:'Minecraft',g:'Sandbox',d:'Пісочниця без меж: виживання, будівництво, редстоун, моди та власні сервери.',c:'#3d3d3d,#E10600'}];
+const NEWS=[
+{id:'n1',t:'Falcons вперше виграли Major: 3:0 проти FURIA',c:'CS2',d:'21.06.2026',x:'У гранд-фіналі IEM Cologne Major 2026 на LANXESS Arena в Кельні Team Falcons обіграли FURIA з рахунком 3:0 у серії Bo5. Це перший Major в історії організації. Призовий фонд турніру — $1 250 000, чемпіони отримали $500 000. MVP став m0NESY, а NiKo нарешті виграв свій перший Major.',s:'https://esports.gg/news/counter-strike-2/winners-cologne-major-2026-overview/'},
+{id:'n2',t:'Team Spirit втретє виграли The International',c:'Dota 2',d:'23.08.2026',x:'Team Spirit перемогли TEAM VISION 3:2 у фіналі The International 2026 у Шанхаї (SPD Bank Oriental Sports Center). До фіналу Vision двічі обіграли Spirit: 2:0 у групі та 2:1 у верхній сітці. Турнір пройшов 13–23 серпня.',s:'https://english.shanghai.gov.cn/en-Latest-WhatsNew/20260826/1a68526789964b6a8017067622f81aae.html'},
+{id:'n3',t:'LOUD — дворазові чемпіони VALORANT Champions',c:'Valorant',d:'18.10.2026',x:'LOUD обіграли Team Vitality 3:1 у фіналі VALORANT Champions 2026 у Шанхаї й стали першою командою в історії гри, що виграла Champions двічі. MVP турніру — erde. Призовий фонд — $2 250 000.',s:'https://consolepcgaming.com/loud-beat-vitality-3-1-to-win-valorant-champions-2026/'},
+{id:'n4',t:'Вийшов Minecraft Dungeons II',c:'Minecraft',d:'29.09.2026',x:'Minecraft Dungeons II вийшов на PS5, Xbox Series, Switch, Switch 2 та ПК. Гру створили Mojang і Double Eleven, видавець — Xbox Game Studios. Реліз супроводжував офіційний трейлер запуску.',s:'https://www.rpgsite.net/news/21164-minecraft-dungeons-2-gameplay-trailer-new'},
+{id:'n5',t:'Vitality домінують у CS2 у 2026 році',c:'CS2',d:'2026',x:'Team Vitality виграли IEM Kraków (3:1 у FURIA), BLAST Open Rotterdam (3:0 у NAVI), IEM Rio (3:0 у Spirit) та BLAST Rivals 2026 Season 1 (3:0 у NAVI), а восени — StarLadder StarSeries (3:1 в Aurora Gaming).',s:'https://en.wikipedia.org/wiki/Ropz'}];
+const VIDS=[
+{id:'v1',t:'Falcons vs FURIA — хайлайти гранд-фіналу',c:'CS2 Highlights',yt:'CgU_k2phJzA',d:'Офіційні ігрові хайлайти гранд-фіналу IEM Cologne Major 2026.'},
+{id:'v2',t:'TEAM VISION vs Team Spirit — гранд-фінал TI 2026',c:'Dota 2',yt:'Gh8HoRr4Ml0',d:'Хайлайти гранд-фіналу The International 2026 у Шанхаї.'},
+{id:'v3',t:'LOUD vs Vitality — Grand Finals Film',c:'Valorant',yt:'Y5euEbgtM1A',d:'Офіційний фільм про гранд-фінал VALORANT Champions Shanghai.'},
+{id:'v4',t:'Minecraft Dungeons II — трейлер запуску',c:'Minecraft',yt:'Wd71TK7fQbs',d:'Офіційний трейлер запуску Minecraft Dungeons II.'},
+{id:'v5',t:'IEM Cologne Major 2026 — плейоф (трансляція)',c:'Esports',yt:'AlOwMEAtD0Q',d:'Офіційна трансляція плейоф IEM Cologne Major 2026.'},
+{id:'v6',t:'TI 2026 — гранд-фінал, гра 5',c:'Esports',yt:'o3W28o7jLYo',d:'П’ята, вирішальна гра фіналу Spirit — TEAM VISION.'}];
+const GUIDES=[
+{id:'g1',t:'Налаштування CS2',x:'Перевірте частоту оновлення монітора, чутливість миші та eDPI, приціл і налаштування звуку. Змінюйте по одному параметру та тестуйте на тренувальній карті.'},
+{id:'g2',t:'Налаштування графіки',x:'Починайте з розділної здатності та якості тіней: вони найбільше впливають на FPS. Вимкніть зайві ефекти й оберіть стабільний FPS замість максимальної якості.'},
+{id:'g3',t:'Підвищення продуктивності ПК',x:'Оновіть драйвери відеокарти, закрийте фонові програми, перевірте температуру та вільне місце на SSD, оберіть режим високої продуктивності.'},
+{id:'g4',t:'Ігрові тактики',x:'Грайте через комунікацію: короткі інформативні виклики, контроль ресурсів, єдиний план на раунд і аналіз власних повторів.'},
+{id:'g5',t:'Поради новачкам',x:'Пройдіть навчання, оберіть одного героя чи зброю для вивчення, не соромтесь питати й дивіться повтори своїх ігор.'},
+{id:'g6',t:'Налаштування периферії',x:'Підберіть зручну мишу та килимок, налаштуйте DPI, polling rate та підсвітку клавіатури. Зручність важливіша за характеристики на коробці.'}];
+const TOURS=[
+['IEM Cologne Major 2026','CS2','Falcons 3:0 FURIA','21.06.2026','https://en.wikipedia.org/wiki/IEM_Cologne_Major_2026'],
+['PGL Masters Bucharest','CS2','FURIA 3:2 Nemiga Gaming','31.10.2026',''],
+['StarLadder StarSeries Fall 2026','CS2','Vitality 3:1 Aurora Gaming','осінь 2026','https://en.wikipedia.org/wiki/Ropz'],
+['The International 2026','Dota 2','Team Spirit 3:2 TEAM VISION','23.08.2026','https://www.prnewswire.co.uk/news-releases/the-international-2026-concludes-in-shanghai-celebrating-esports-culture-and-global-connection-302860402.html'],
+['VALORANT Champions 2026','Valorant','LOUD 3:1 Vitality','18.10.2026','https://en.wikipedia.org/wiki/2026_Valorant_Champions'],
+['VCT China Stage 2','Valorant','TYLOO 3:1 JDG','23.08.2026','https://esports.gg/news/valorant/tyloo-vct-china-stage-2-champions/'],
+['VCT Masters Santiago 2026','Valorant','Nongshim RedForce 3:0 Paper Rex','16.03.2026','']];
+const SURV=[
+{k:'game',q:'1. У яку гру ти граєш найчастіше?',o:['Counter-Strike 2','Dota 2','Valorant','Minecraft','Інша']},
+{k:'sec',q:'2. Який розділ Gaming Zone тобі подобається найбільше?',o:['Новини','Відео','Гайди','Кіберспорт','Ігри']},
+{k:'cont',q:'3. Який контент хочеш бачити частіше?',o:['Новини','Відео','Гайди','Турніри']},
+{k:'rate',q:'4. Оціни сайт від 1 до 5',o:['1','2','3','4','5']}];
+let db=null,uid=null,comments=[],surveys=[],last=0,Q='';
+const PLAYERS=[
+{id:'monesy',n:'m0NESY',team:'Team Falcons',g:'CS2',b:'Ілля Осипов, відомий як m0NESY, — гравець Team Falcons. На IEM Cologne Major 2026 він став MVP турніру після перемоги Falcons 3:0 над FURIA у гранд-фіналі.'},
+{id:'niko',n:'NiKo',team:'Team Falcons',g:'CS2',b:'Нікола Ковач (NiKo) — гравець Team Falcons. На IEM Cologne 2026 виграв свій перший Major після 17 участей у Major і двох програних гранд-фіналів.'},
+{id:'kyousuke',n:'kyousuke',team:'Team Falcons',g:'CS2',b:'Гравець Team Falcons. У півфіналі Cologne Major проти Team Spirit (2:1) був одним із найяскравіших гравців матчу.'},
+{id:'karrigan',n:'karrigan',team:'Team Falcons',g:'CS2',b:'Ігровий лідер Team Falcons. Допоміг команді виграти IEM Cologne Major 2026 — перший Major в історії організації.'},
+{id:'teses',n:'TeSeS',team:'Team Falcons',g:'CS2',b:'Рене Мадсен (TeSeS) — гравець Team Falcons, чемпіон IEM Cologne Major 2026.'},
+{id:'fallen',n:'FalleN',team:'FURIA',g:'CS2',b:'Бразильський ветеран Counter-Strike Габріел Толедо (FalleN). Провів FURIA до фіналу IEM Cologne Major 2026. Раніше вигравав IEM Cologne у 2016 та 2017 роках.'},
+{id:'yekindar',n:'YEKINDAR',team:'FURIA',g:'CS2',b:'Гравець FURIA. Допоміг команді вперше в її історії дійти до фіналу Major: у півфіналі FURIA обіграли Aurora Gaming 2:0.'},
+{id:'donk',n:'donk',team:'Team Spirit',g:'CS2',b:'Гравець Team Spirit. На Cologne Major Spirit дійшли до півфіналу (3–4 місце), у чвертьфіналі виграли у G2.'},
+{id:'ropz',n:'ropz',team:'Team Vitality',g:'CS2',b:'Гравець Team Vitality. Триразовий чемпіон Major (Antwerp 2022, Austin 2025, Budapest 2025), триразовий чемпіон ESL Grand Slam, вісім разів у HLTV Top 20. У 2026 виграв із Vitality IEM Kraków, Cluj-Napoca, Rotterdam та Rio.'},
+{id:'apex',n:'apEX',team:'Team Vitality',g:'CS2',b:'Ден Мадеклер (apEX) — ветеран Team Vitality, учасник IEM Cologne Major 2026.'},
+{id:'erde',n:'erde',team:'LOUD',g:'VALORANT',b:'Роберто Лобос (erde) — ігровий лідер LOUD. MVP VALORANT Champions 2026, де LOUD обіграли Vitality 3:1 і виграли Champions удруге.'},
+{id:'noone',n:'No[o]ne',team:'TEAM VISION',g:'Dota 2',b:'Мід-лейнер TEAM VISION (PARIVISION), фіналіста The International 2026, де команда поступилась Team Spirit 3:2.'}];
+[...GAMES].forEach(g=>g.img='img/'+g.id+'.jpg');NEWS.forEach(n=>n.img='img/news-'+n.id+'.jpg');GUIDES.forEach(g=>g.img='img/guide-'+g.id+'.jpg');PLAYERS.forEach(p=>p.img='img/player-'+p.id+'.jpg');
+const art=(c,t,i)=>`<div class="art" style="background:linear-gradient(135deg,${c})">${esc(t)}${i?`<img src="${i}" alt="" loading="lazy" onerror="this.remove()">`:''}</div>`;
+const pc=p=>`<a class="card" href="#player-${p.id}">${art('#1a1a1a,#E10600',p.n.slice(0,2).toUpperCase(),p.img)}<div class="cb"><span class="tag">${p.team}</span><h3>${esc(p.n)}</h3><p>${p.g}</p></div></a>`;
+const gc=g=>`<a class="card" href="#game-${g.id}">${art(g.c,g.n.split(' ')[0],g.img)}<div class="cb"><span class="tag">${g.g}</span><h3>${g.n}</h3><p>${g.d.slice(0,95)}…</p><div class="row"><span class="btn s">Details</span><span class="btn s o" data-go="guides">Guides</span></div></div></a>`;
+const nc=n=>`<a class="card" href="#news-${n.id}">${art('#2a0a0a,#E10600',n.c,n.img)}<div class="cb"><span class="tag">${n.c}</span><h3>${n.t}</h3><p class="meta">${n.d}</p></div></a>`;
+const vc=v=>`<div class="card"><div class="vp">${v.yt?`<iframe src="https://www.youtube-nocookie.com/embed/${v.yt}" title="${esc(v.t)}" loading="lazy" allowfullscreen></iframe>`:''}</div><div class="cb"><span class="tag">${v.c}</span><h3>${v.t}</h3><p>${v.d}</p><div class="row"><a class="btn s" href="#video-${v.id}">Open</a></div></div></div>`;
+const gdc=g=>`<a class="card" href="#guide-${g.id}">${art('#1a1a1a,#8a1c1c','GUIDE',g.img)}<div class="cb"><h3>${g.t}</h3><p>${g.x.slice(0,80)}…</p></div></a>`;
+const sh=(t,l)=>`<div class="sh"><h2>${t}</h2>${l?`<a class="btn s o" href="#${l}">View all</a>`:''}</div>`;
+const tourT=n=>`<div class="ov"><table><tr><th>Турнір</th><th>Гра</th><th>Фінал</th><th>Дата</th><th></th></tr>${TOURS.slice(0,n||99).map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td><b>${r[2]}</b></td><td>${r[3]}</td><td>${r[4]?`<a href="${r[4]}" target="_blank" rel="noopener" style="color:var(--red)">↗</a>`:''}</td></tr>`).join('')}</table></div>`;
+const radios=()=>SURV.map(s=>`<div class="field"><label>${s.q}</label>${s.o.map(o=>`<label class="opt"><input type="radio" name="${s.k}" value="${o}">${o}</label>`).join('')}</div>`).join('');
+const cmBox=id=>`<h2 style="margin-top:40px">Коментарі</h2><div id="cmn"></div><div class="field"><input id="cn" maxlength="30" placeholder="Ім’я"></div><div class="field"><textarea id="ct" rows="3" maxlength="500" placeholder="Ваш коментар"></textarea></div><input class="hp" id="hp" tabindex="-1" autocomplete="off"><button class="btn" id="cs" data-p="${id}">SEND</button><div id="cmsg" class="meta" style="margin-top:10px"></div><div id="cml" style="margin-top:20px"></div>`;
+const FORMS={survey:'',contact:'',comments:''};
+const formBox=(k,t)=>FORMS[k]?`<iframe src="${FORMS[k]}" title="${t}" style="width:100%;height:900px;border:0;background:#fff" loading="lazy"></iframe>`:`<div class="note"><b>${t}:</b> тут буде Google Форма. Створіть форму й вставте її посилання у змінну FORMS.${k} на початку скрипта.</div>`;
+const pg=h=>{
+ if(h==='home')return`<div class="pg"><div class="hero"><div class="wrap"><h1>GAMING <b>ZONE</b></h1><div class="slogan">YOUR WORLD. YOUR GAME.</div><div class="btns"><a class="btn" href="#games">Explore Games</a><a class="btn o" href="#news">Latest News</a></div></div></div>
+ <div class="wrap"><section>${sh('Популярні ігри','games')}<div class="grid">${GAMES.map(gc).join('')}</div></section>
+ <section>${sh('Останні новини','news')}<div class="grid g3">${NEWS.slice(0,3).map(nc).join('')}</div></section>
+ <section>${sh('Останні турніри','esports')}${tourT(4)}</section>
+ <section>${sh('Популярні відео','videos')}<div class="grid g3">${VIDS.slice(0,3).map(vc).join('')}</div></section>
+ <section>${sh('Рекомендовані гайди','guides')}<div class="grid g3">${GUIDES.slice(0,3).map(gdc).join('')}</div></section>
+ <section>${sh('Гравці','players')}<div class="grid">${PLAYERS.slice(0,4).map(pc).join('')}</div></section>
+ <section><div class="note"><h2>Опитування</h2>Допоможи зробити Gaming Zone кращим — це займе хвилину.<br><br><a class="btn" href="#survey">Пройти опитування</a></div></section></div></div>`;
+ if(h==='players')return`<div class="pg wrap"><section>${sh('Гравці')}<div class="grid">${PLAYERS.map(pc).join('')}</div></section></div>`;
+ if(h==='games')return`<div class="pg wrap"><section>${sh('Ігри')}<div class="grid">${GAMES.map(gc).join('')}</div></section></div>`;
+ if(h==='esports')return`<div class="pg wrap"><section>${sh('Кіберспорт 2026')}<p class="meta">Результати зібрані з відкритих джерел (посилання — біля турнірів і в новинах).</p>
+ <h3>Турніри</h3>${tourT()}
+ <h3 style="margin-top:30px">IEM Cologne Major 2026 — підсумки</h3><div class="ov"><table><tr><th>Місце</th><th>Команда</th><th>Приз</th></tr><tr><td>1</td><td>Team Falcons</td><td>$500 000</td></tr><tr><td>2</td><td>FURIA</td><td></td></tr><tr><td>3–4</td><td>Aurora Gaming</td><td></td></tr><tr><td>3–4</td><td>Team Spirit</td><td></td></tr></table></div>
+ <div class="grid g2" style="margin-top:30px"><div><h3>Результати плейоф (Cologne)</h3><div class="ov"><table><tr><th>Етап</th><th>Матч</th></tr><tr><td>1/4</td><td>Aurora Gaming 2:0 BetBoom Team</td></tr><tr><td>1/4</td><td>Falcons 2:1 Vitality</td></tr><tr><td>1/4</td><td>Spirit виграли у G2</td></tr><tr><td>1/4</td><td>FURIA виграли у 9z Team</td></tr><tr><td>1/2</td><td>FURIA 2:0 Aurora Gaming</td></tr><tr><td>1/2</td><td>Falcons 2:1 Spirit</td></tr><tr><td>Фінал</td><td><b>Falcons 3:0 FURIA</b></td></tr></table></div></div>
+ <div><h3>Хронологія 2026</h3><div class="ov"><table><tr><td>16.03</td><td>VCT Masters Santiago — фінал</td></tr><tr><td>02–21.06</td><td>IEM Cologne Major</td></tr><tr><td>13–23.08</td><td>The International 2026</td></tr><tr><td>24.09–18.10</td><td>VALORANT Champions</td></tr><tr><td>29.09</td><td>Реліз Minecraft Dungeons II</td></tr><tr><td>31.10</td><td>PGL Masters Bucharest — фінал</td></tr></table></div></div></div>
+ <div class="grid g2" style="margin-top:30px"><div><h3>Команди</h3><div class="ov"><table><tr><td>Team Falcons</td><td>чемпіони Cologne Major 2026</td></tr><tr><td>FURIA</td><td>фіналісти Cologne Major, переможці PGL Masters Bucharest</td></tr><tr><td>Team Spirit</td><td>чемпіони TI 2026 (Dota 2)</td></tr><tr><td>Team Vitality</td><td>чемпіони кількох CS2-турнірів 2026</td></tr><tr><td>LOUD</td><td>чемпіони VALORANT Champions 2026</td></tr><tr><td>TEAM VISION</td><td>фіналісти TI 2026</td></tr></table></div></div>
+ <div><h3>Гравці</h3><div class="ov"><table><tr><th>Нікнейм</th><th>Команда</th></tr>${PLAYERS.map(p=>`<tr><td><a href="#player-${p.id}" style="color:var(--red)">${esc(p.n)}</a></td><td>${p.team}</td></tr>`).join('')}</table></div></div></div></section></div>`;
+ if(h==='news'){const cats=['All',...new Set(NEWS.map(n=>n.c))];return`<div class="pg wrap"><section>${sh('Новини')}<input id="nf" placeholder="Пошук новин…" style="margin-bottom:16px"><div class="chips">${cats.map((c,i)=>`<span class="chip${i?'':' on'}" data-c="${c}">${c}</span>`).join('')}</div><div class="grid g3" id="nl">${NEWS.map(nc).join('')}</div></section></div>`}
+ if(h==='videos'){const cats=['All',...new Set(VIDS.map(n=>n.c))].filter((c,i,a)=>a.indexOf(c)===i);return`<div class="pg wrap"><section>${sh('Відео')}<input id="vf" placeholder="Пошук відео…" style="margin-bottom:16px"><div class="chips">${cats.map((c,i)=>`<span class="chip${i?'':' on'}" data-c="${c}">${c}</span>`).join('')}</div><div class="grid g3" id="vl">${VIDS.map(vc).join('')}</div></section></div>`}
+ if(h==='guides')return`<div class="pg wrap"><section>${sh('Гайди')}<div class="grid g3">${GUIDES.map(gdc).join('')}</div></section></div>`;
+ if(h==='survey')return`<div class="pg wrap"><section>${sh('Опитування')}${formBox('survey','Опитування')}</section></div>`;
+ if(h==='about')return`<div class="pg wrap"><section>${sh('Про нас')}<div class="prose"><p>Gaming Zone — портал про відеоігри та кіберспорт: Counter-Strike 2, Dota 2, Valorant, Minecraft, ігрові новини, турніри, гайди та відео.</p><p><b>YOUR WORLD. YOUR GAME.</b></p></div></section></div>`;
+ if(h==='contact')return`<div class="pg wrap"><section>${sh('Контакти')}${formBox('contact','Контактна форма')}</section></div>`;
+ if(h==='search'){return`<div class="pg wrap"><section>${sh('Пошук')}<input id="gs" value="${esc(Q)}" placeholder="Що шукаємо?"><div id="gr" style="margin-top:20px"></div></section></div>`}
+ const m=h.match(/^(game|news|video|guide|player)-(.+)$/);
+ if(m){const [,k,id]=m;
+  if(k==='game'){const g=GAMES.find(x=>x.id===id);if(g)return`<div class="pg wrap"><section><a href="#games" class="meta">← Ігри</a><div class="art" style="background:linear-gradient(135deg,${g.c});height:220px;margin:12px 0">${g.n}</div><span class="tag">${g.g}</span><h1 style="margin-top:12px">${g.n}</h1><div class="prose"><p>${g.d}</p></div><div class="btns"><a class="btn" href="#guides">Guides</a><a class="btn o" href="#videos">Videos</a></div></section></div>`}
+  if(k==='news'){const n=NEWS.find(x=>x.id===id);if(n)return`<div class="pg wrap"><section><a href="#news" class="meta">← Новини</a><div class="art" style="background:linear-gradient(135deg,#2a0a0a,#E10600);height:200px;margin:12px 0">${n.c}</div><h1>${n.t}</h1><p class="meta">${n.d}</p><div class="prose"><p>${n.x}</p><p><a class="btn s o" href="${n.s}" target="_blank" rel="noopener">Джерело ↗</a></p></div></section></div>`}
+  if(k==='player'){const p=PLAYERS.find(x=>x.id===id);if(p)return`<div class="pg wrap"><section><a href="#players" class="meta">← Гравці</a><div class="grid g2" style="margin-top:12px">${art('#1a1a1a,#E10600',p.n.slice(0,2).toUpperCase(),p.img).replace('class="art"','class="art" style2=""').replace('<div class="art"','<div class="art" data-big="1"')}<div><span class="tag">${p.team}</span><h1 style="margin-top:12px">${esc(p.n)}</h1><p class="meta">${p.g}</p><div class="prose"><p>${p.b}</p></div></div></div></section></div>`}
+  if(k==='guide'){const g=GUIDES.find(x=>x.id===id);if(g)return`<div class="pg wrap"><section><a href="#guides" class="meta">← Гайди</a><h1 style="margin-top:12px">${g.t}</h1><div class="prose"><p>${g.x}</p></div></section></div>`}
+  if(k==='video'){const v=VIDS.find(x=>x.id===id);if(v)return`<div class="pg wrap"><section><a href="#videos" class="meta">← Відео</a><h1 style="margin-top:12px">${v.t}</h1><div class="player">${v.yt?`<iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(v.yt)}" allowfullscreen title="${esc(v.t)}"></iframe>`:`<div>Відео ще не додано (DEMO).<br>Вкажіть ID YouTube у полі yt цього відео.</div>`}</div>${v.yt?`<p><a class="btn s o" href="https://www.youtube.com/watch?v=${v.yt}" target="_blank" rel="noopener">Дивитись на YouTube ↗</a></p>`:''}<p>${v.d}</p><h2 style="margin-top:40px">Коментарі</h2>${formBox('comments','Коментарі')}</section></div>`}
+ }
+ return`<div class="pg wrap"><section><h1>404</h1><a class="btn" href="#home">Home</a></section></div>`;
+};
+function paintC(){const b=$('#cs');if(!b)return;const p=b.dataset.p,l=$('#cml');
+ const list=comments.filter(c=>c.page===p);
+ l.innerHTML=list.length?list.map(c=>`<div class="cm"><b>${esc(c.name)}</b> <span class="meta">${new Date(c.ts).toLocaleString('uk-UA')}</span><p>${esc(c.text)}</p>${uid&&c.uid===uid?`<button class="chip" data-del="${c.id}">Видалити</button>`:''}</div>`).join(''):'<p class="meta">Коментарів ще немає.</p>';
+ $('#cmn').innerHTML=db?'':'<div class="note">Коментарі працюють лише для користувачів, які увійшли в claude.ai.</div>'}
+function paintS(){const r=$('#sr');if(!r)return;
+ if(!db){r.innerHTML='<p class="meta">Результати недоступні без підключення до бази.</p>';return}
+ if(!surveys.length){r.innerHTML='<p class="meta">Відповідей ще немає.</p>';return}
+ r.innerHTML=`<p class="meta">Відповідей: ${surveys.length}</p>`+SURV.map(s=>`<h3 style="font-size:15px;margin-top:18px">${s.q}</h3>`+s.o.map(o=>{const n=surveys.filter(a=>a[s.k]===o).length,p=Math.round(n/surveys.length*100);return`<div>${o} — ${n} (${p}%)<span style="width:${p}%"></span></div>`}).join('')).join('');
+ const sn=$('#sn');if(sn)sn.innerHTML=db?'':'<div class="note">Для збереження відповідей потрібен вхід у claude.ai.</div>'}
+function paintSearch(){const r=$('#gr');if(!r)return;const q=Q.trim().toLowerCase();if(!q){r.innerHTML='<p class="meta">Введіть запит.</p>';return}
+ const idx=[...GAMES.map(g=>['Гра',g.n+' '+g.g+' '+g.d,g.n,'game-'+g.id]),...NEWS.map(n=>['Новина',n.t+' '+n.x,n.t,'news-'+n.id]),...VIDS.map(v=>['Відео',v.t+' '+v.d+' '+v.c,v.t,'video-'+v.id]),...GUIDES.map(g=>['Гайд',g.t+' '+g.x,g.t,'guide-'+g.id]),...TOURS.map(t=>['Турнір',t.join(' '),t[0],'esports'])];
+ const hit=idx.filter(i=>i[1].toLowerCase().includes(q));
+ r.innerHTML=hit.length?hit.map(i=>`<a class="cm" style="display:block" href="#${i[3]}"><span class="tag">${i[0]}</span> <b>${esc(i[2])}</b></a>`).join(''):'<p class="meta">Нічого не знайдено.</p>'}
+let cur=(location.hash||'#home').slice(1);
+function render(){const h=cur,b=h.split('-')[0];
+ $('#app').innerHTML=pg(h);$('#nav').innerHTML=NAV.map(n=>`<a href="#${n[0]}" class="${n[0]===h||n[0]===b+'s'?'on':''}">${n[1]}</a>`).join('');
+ $('#nav').classList.remove('open');window.scrollTo(0,0);paintC();paintS();paintSearch()}
+addEventListener('hashchange',()=>{cur=(location.hash||'#home').slice(1);render()});
+$('#burger').onclick=()=>$('#nav').classList.toggle('open');
+$('#srch').onclick=()=>{$('#sb').classList.toggle('open');$('#sq').focus()};
+$('#sf').onsubmit=e=>{e.preventDefault();Q=$('#sq').value;$('#sb').classList.remove('open');cur='search';render()};
+document.addEventListener('input',e=>{if(e.target.id==='gs'){Q=e.target.value;paintSearch()}if(e.target.id==='nf'||e.target.id==='vf')filt(e.target.id==='nf'?'news':'vid')});
+let cat={news:'All',vid:'All'};
+function filt(k){const isN=k==='news',L=isN?NEWS:VIDS,q=$(isN?'#nf':'#vf').value.toLowerCase();
+ const r=L.filter(x=>(cat[k]==='All'||x.c===cat[k])&&(x.t+' '+(x.d||'')).toLowerCase().includes(q));
+ $(isN?'#nl':'#vl').innerHTML=r.length?r.map(isN?nc:vc).join(''):'<p class="meta">Нічого не знайдено.</p>'}
+document.addEventListener('click',async e=>{const t=e.target;
+ const go=t.closest&&t.closest('[data-go]');if(go){e.preventDefault();cur=go.dataset.go;render();return}
+ const an=t.closest&&t.closest('a[href^="#"]');if(an){e.preventDefault();cur=an.getAttribute('href').slice(1);render();return}
+ if(t.classList.contains('chip')&&t.dataset.c){const k=$('#nf')?'news':'vid';cat[k]=t.dataset.c;document.querySelectorAll('.chip').forEach(c=>c.classList.toggle('on',c===t));filt(k)}
+ if(t.dataset.del&&db){try{await db.collection('comments').doc(t.dataset.del).delete()}catch(x){}}
+ if(t.id==='cs'){const m=$('#cmsg'),n=$('#cn').value.trim(),x=$('#ct').value.trim();m.textContent='';
+  if($('#hp').value)return;if(!db){m.textContent='Увійдіть у claude.ai, щоб коментувати.';return}
+  if(!n||!x){m.textContent='Заповніть ім’я та коментар.';return}
+  if((x.match(/https?:\/\//g)||[]).length>1){m.textContent='Забагато посилань.';return}
+  if(Date.now()-last<20000){m.textContent='Зачекайте кілька секунд перед наступним коментарем.';return}
+  if(comments.some(c=>c.uid===uid&&c.page===t.dataset.p&&c.text===x)){m.textContent='Такий коментар уже є.';return}
+  try{await db.collection('comments').add({page:t.dataset.p,name:n,text:x,ts:Date.now(),uid:uid||''});last=Date.now();$('#ct').value='';m.textContent='Опубліковано.'}catch(err){m.textContent='Не вдалося зберегти. Спробуйте пізніше.'}}});
+document.addEventListener('submit',async e=>{const f=e.target;
+ if(f.id==='svf'){e.preventDefault();const m=$('#smsg'),a={};m.style.color='';
+  if(!db){m.textContent='Для надсилання потрібен вхід у claude.ai.';return}
+  for(const s of SURV){const c=f.querySelector(`input[name=${s.k}]:checked`);if(!c){m.textContent='Дайте відповідь на всі питання 1–4.';return}a[s.k]=c.value}
+  a.improve=$('#sx').value.trim();a.ts=Date.now();
+  try{await(uid?db.collection('survey').doc(uid).set(a):db.collection('survey').add(a));m.style.color='';m.textContent='Дякуємо! Відповідь збережено.'}catch(x){m.textContent='Не вдалося зберегти.'}}
+ if(f.id==='kf'){e.preventDefault();const m=$('#kmsg'),v=[1,2,3,4].map(i=>$('#k'+i).value.trim());
+  if(v.some(x=>!x)){m.textContent='Заповніть усі поля.';return}
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v[1])){m.textContent='Невірний email.';return}
+  if(!db||!uid){m.textContent='Для надсилання потрібен вхід у claude.ai.';return}
+  try{await db.collection('messages').doc(uid).set({name:v[0],email:v[1],subject:v[2],text:v[3],ts:Date.now()});f.reset();m.textContent='Повідомлення надіслано.'}catch(x){m.textContent='Не вдалося надіслати.'}}});
+render();
+</script>
+</body>
+</html>
